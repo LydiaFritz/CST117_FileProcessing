@@ -40,10 +40,10 @@ namespace FileProcessingStatistics
             string firstAlpha = "", lastAlpha = "", longestWord = "";
             while (!sr.EndOfStream)
             {
-                
+
                 string str = sr.ReadLine( );
                 string[] words = str.Split( );
-               
+
                 foreach (string s in words)
                 {
                     if (s.Length > 0)
@@ -68,9 +68,15 @@ namespace FileProcessingStatistics
                     }
                 }
             }
-                this.richTextBox1.Text += "First alphabetic: " + firstAlpha +
-                    "\nLast alphabetic: " + lastAlpha +
-                    "\nLongest word: " + longestWord + "\n";           
+
+            //write this info to a file as well
+
+            this.richTextBox1.Text += "First alphabetic: " + firstAlpha +
+                  "\nLast alphabetic: " + lastAlpha +
+                  "\nLongest word: " + longestWord + "\n";
+
+           
+            System.IO.File.WriteAllText( "outFile.out", richTextBox1.Text );
         }
 
         private void button2_Click( object sender, EventArgs e )
